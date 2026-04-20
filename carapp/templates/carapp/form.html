@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* ✅ Success Message */
+        .success-msg {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 1px solid #c3e6cb;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+        }
+
+        /* ✅ Button */
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>🚗 Enter Your Details</h2>
+
+    {% if success %}
+        <div class="success-msg">
+            ✅ Profile saved successfully! Redirecting to suggestions...
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Income:</label>
+        <input type="number" name="income" required>
+
+        <label>Family Size:</label>
+        <input type="number" name="family_size" required>
+
+        <label>Car Type:</label>
+        <input type="text" name="car_type" required>
+
+        <label>EMI Required:</label>
+        <select name="emi_required">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label>Location:</label>
+        <input type="text" name="location" required>
+
+        <label>Usage:</label>
+        <input type="text" name="usage" required>
+
+        <input type="submit" value="Submit" class="submit-btn">
+
+    </form>
+
+</div>
+
+</body>
+</html>
